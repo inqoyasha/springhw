@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Result</h1>
+    <p th:text="'lastName: ' + ${enterForm.lastName}" />
+    <p th:text="'firstName: ' + ${enterForm.firstName}" />
+    <p th:text="'patronymic: ' + ${enterForm.patronymic}" />
+    <p th:text="'salary: ' + ${enterForm.salary}" />
+    <p th:text="'email: ' + ${enterForm.email}" />
+    <p th:text="'job: ' + ${enterForm.job}" />
+<a href="/enterform">Submit another message</a>
+</body>
+</html>
