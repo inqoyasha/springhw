@@ -1,11 +1,25 @@
 package org.azamat.spring.model;
 
+
+import org.azamat.spring.annotation.IsValidEmail;
+import org.azamat.spring.annotation.IsValidFirstName;
+
+import javax.validation.constraints.NotNull;
+
 public class EnterForm {
+
     private String lastName;
+    @NotNull
+    @IsValidFirstName
     private String firstName;
+
     private String patronymic;
+
     private double salary;
+    @NotNull
+    @IsValidEmail
     private String email;
+
     private String job;
 
     public String getLastName() { return lastName; }

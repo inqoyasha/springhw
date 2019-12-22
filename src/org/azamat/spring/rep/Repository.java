@@ -7,20 +7,28 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.azamat.spring.model.EnterForm;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 public class Repository {
     EnterForm enterForm;
-    private final static String baseFile = "enterForm.json";
+    List<EnterForm> listForm;
+    //private final static String baseFile = "enterForm.json";
 
     public Repository(EnterForm enterForm) {
         this.enterForm = enterForm;
     }
 
+    public void add(EnterForm enterForm) {
+        listForm.add(enterForm);
+    }
+
     public static void toJSON(EnterForm enterForm) {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            mapper.writeValue(new File(baseFile), enterForm);
+            FileOutputStream outputStream = new FileOutputStream("D:\\IdeaProjects\\springhw\\enterForm.json", true);
+            mapper.writeValue(outputStream, enterForm);
         } catch (JsonGenerationException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {
@@ -31,9 +39,10 @@ public class Repository {
     }
 
     public static EnterForm toJavaObject() {
+        File file = new File("D:\\IdeaProjects\\springhw\\enterForm.json");
         try {
             ObjectMapper mapper = new ObjectMapper();
-            return mapper.readValue(new File(baseFile), EnterForm.class);
+            return mapper.readValue(file, EnterForm.class);
         } catch (JsonParseException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {
