@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import javax.validation.constraints.Size;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,7 +25,6 @@ public class EmailValidator implements ConstraintValidator<IsValidEmail, String>
         if (email == null)
             return false;
         Matcher matcher = emailPat.matcher(email);
-
         return matcher.find();
     }
 }
