@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -34,13 +32,7 @@ public class EnterFormController {
             return "enterform";
         }
         Repository.toJSON(enterForm);
-
+        model.addAttribute("enterForm1", new EnterForm());
         return "result";
     }
-
-//    @PostMapping("/result")
-//    public String find(@ModelAttribute EnterForm enterForm1, Model model) {
-//        model.addAttribute("enterForm1", Repository.find(enterForm1));
-//        return "search";
-//    }
 }

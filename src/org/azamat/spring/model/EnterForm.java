@@ -9,15 +9,20 @@ import java.util.Objects;
 
 public class EnterForm {
 
+
     private String lastName;
+
     @IsValidFirstName
     private String firstName;
+
     private String patronymic;
+
     private Double salary;
+
     @IsValidEmail
     private String email;
+
     private String job;
-    private String filename;
 
     public String getLastName() { return lastName; }
     public void setLastName(String lastName) {
@@ -54,12 +59,6 @@ public class EnterForm {
         this.job = job;
     }
 
-    public String getFilename() { return filename; }
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
-
-
     @Override
     public String toString() {
         return "EnterForm{" +
@@ -69,7 +68,6 @@ public class EnterForm {
                 ", salary=" + salary +
                 ", email='" + email + '\'' +
                 ", job='" + job + '\'' +
-                ", filename='" + filename + '\'' +
                 '}';
     }
 
@@ -85,6 +83,6 @@ public class EnterForm {
 
     @Override
     public int hashCode() {
-        return Objects.hash(lastName, firstName, patronymic, salary, email, job, filename);
+        return Objects.hash(lastName, firstName, patronymic, salary, email, job);
     }
 }

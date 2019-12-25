@@ -39,8 +39,8 @@ public class Repository {
         }
     }
 
-    public static EnterForm toJavaObject() {
-        File file = new File("D:\\IdeaProjects\\springhw\\enterForm.json");
+    public static EnterForm toJavaObject(String path) {
+        File file = new File(path);
         try {
             ObjectMapper mapper = new ObjectMapper();
             return mapper.readValue(file, EnterForm.class);

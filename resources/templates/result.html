@@ -5,13 +5,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>Result</h1>
-    <p th:text="'lastName: ' + ${enterForm.lastName}" />
-    <p th:text="'firstName: ' + ${enterForm.firstName}" />
-    <p th:text="'patronymic: ' + ${enterForm.patronymic}" />
-    <p th:text="'salary: ' + ${enterForm.salary}" />
-    <p th:text="'email: ' + ${enterForm.email}" />
-    <p th:text="'job: ' + ${enterForm.job}" />
-<a href="/enterform">Submit another message</a>
+    <h1>Congratulations!</h1>
+
+    <a href="/enterform">Submit another data</a>
+    <p></p>
+    <a href="/upload">Upload .json file</a>
+
+    <form action="#" th:action="@{/result}" th:object="${enterForm1}" method="post">
+        <p>Last Name: <input type="text" th:field="*{lastName}" /></p>
+        <p>First Name: <input type="text" th:field="*{firstName}" /></p>
+        <p><input type="submit" value="Search" /></p>
+    </form>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package org.azamat.spring.conroller;
 
 import org.azamat.spring.model.EnterForm;
+import org.azamat.spring.rep.Repository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import java.io.IOException;
 
 @Controller
 public class UploadController {
+
     @Value("${upload.path}")
     private String uploadPath;
 
@@ -38,12 +40,11 @@ public class UploadController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            enterForm.setFilename(resultFileName);
+            Repository.toJSON(Repository.toJavaObject(uploadPath + "/" + resultFileName));
         }
 
         return "redirect:/result";
     }
-
 
 
 }
