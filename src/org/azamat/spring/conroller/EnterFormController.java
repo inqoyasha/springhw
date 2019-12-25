@@ -3,6 +3,8 @@ package org.azamat.spring.conroller;
 import org.azamat.spring.model.EnterForm;
 import org.azamat.spring.rep.Repository;
 
+import org.azamat.spring.service.MailSender;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,9 @@ public class EnterFormController {
     @Value("${upload.path}")
     private String uploadPath;
 
+    @Autowired
+    MailSender mailSender;
+
     @GetMapping("/enterform")
     public String eneterForm(Model model) {
         model.addAttribute("enterForm", new EnterForm());
@@ -31,6 +36,8 @@ public class EnterFormController {
         if (results.hasErrors()) {
             return "enterform";
         }
+        String mes = String.format("Hello, %s %s!", enterForm.getFirstName(), enterForm.getPatronymic());
+        mailSender.send(enterForm.getEmail(), "YO", mes);
         Repository.toJSON(enterForm);
         model.addAttribute("enterForm1", new EnterForm());
         return "result";
